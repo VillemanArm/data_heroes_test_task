@@ -3,8 +3,10 @@ import { RouterLink, RouterView } from 'vue-router'
 import { reactive, ref, computed, onMounted, onUpdated, watch } from 'vue'
 import axios from 'axios'
 
-import Logo from './components/Logo.vue'
-import CharacterCard from './components/CharacterCard.vue'
+import Logo from '@/components/UI/Logo.vue'
+import Pagination from '@/components/UI/Pagination.vue'
+import CharacterCard from '@/components/CharacterCard.vue'
+
 
 interface CharactersList {
   info: {
@@ -30,6 +32,11 @@ const serverURL: string = 'https://rickandmortyapi.com/graphql'
 const charactersList = ref<CharactersList>()
 const currentPage = ref<number>(1)
 
+const setPage = (pageNumber: number) => {
+  if (charactersList.value && (pageNumber > 0 && pageNumber <= charactersList.value?.info.pages)) {
+    currentPage.value = pageNumber
+  }
+}
 const query = computed<string>(() => `
     query {
       characters (page: ${currentPage.value}) {
@@ -64,6 +71,10 @@ const getData = (query: string) => {
     });
 }
 
+watch (query, () => {
+  getData(query.value)
+})
+
 onMounted(() => {
   getData(query.value)
 })
@@ -72,18 +83,25 @@ onMounted(() => {
 
 <template>
   <header>
-    <div class="container characters-controls">
+    <div class="container">
       <Logo/>
-      <div class="characters-controls__pagination">
+    </div>
 
-      </div>
+  </header>
+
+    <div class="container characters-controls">
+      <Pagination 
+        v-if="charactersList" 
+        :maxPage="charactersList.info.pages" 
+        :setPage="setPage" 
+        :currentPage="currentPage" 
+      />
+
       <div class="characters-controls__filter">
 
       </div>
 
     </div>
-
-  </header>
   
 
   <div class="container characters-wrap">
