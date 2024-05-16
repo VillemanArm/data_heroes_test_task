@@ -47,7 +47,7 @@ onMounted(() => {
 
 <template>
 
-  <!-- <CharacterCard class="" v-for="character in charactersList" :key="character.id" :character="character"/> -->
+  <CharacterCard class="" v-for="character in charactersList" :key="character.id" :character="character"/>
 
 </template>
 

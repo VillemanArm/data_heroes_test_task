@@ -9,54 +9,92 @@ defineProps<{
 
 <template>
 
-	<article class="characterCard__Wrapper-sc-1ejywvi-0 bEklxv">
-		<div class="characterCard__ImgWrapper-sc-1ejywvi-1 fkUcVI">
+	<div class="character-card">
+		<div class="character-card__img">
 			<img src="https://rickandmortyapi.com/api/character/avatar/75.jpeg" alt="Courier Flap">
 		</div>
-		<div class="characterCard__ContentWrapper-sc-1ejywvi-2 isMAic">
-			<div class="section">
-				<a href="https://rickandmortyapi.com/api/character/75" rel="noopener noreferrer" target="_blank" class="externalLink__ExternalLink-sc-1lixk38-0 ffGNdR">
-					<h2>Courier Flap</h2>
-				</a>
-				<span class="status">
-				<span class="status__icon">
-				</span> Alive - Alien</span>
+		<div class="character-card__description">
+			<div class="character-card__section">
+				<h2>Courier Flap</h2>
+
+				<span class="character-card__status">
+					<span class="character-card__status-icon"></span> 
+					<span>Alive - Alien</span>
+				</span>
 			</div>
-			<div class="section">
-				<span class="text-gray">Last known location:</span>
-				<a href="https://rickandmortyapi.com/api/location/35" rel="noopener noreferrer" target="_blank" class="externalLink__ExternalLink-sc-1lixk38-0 ffGNdR">Planet Squanch</a>
+			<div class="character-card__section">
+				<span class="character-card__title">Last known location:</span><br>
+				<span class="character-card__info">Planet Squanch</span>
 			</div>
-			<div class="section">
-				<span class="text-gray">First seen in:</span>
-				<a href="https://rickandmortyapi.com/api/episode/21" rel="noopener noreferrer" target="_blank" class="externalLink__ExternalLink-sc-1lixk38-0 ffGNdR">The Wedding Squanchers</a>
+			<div class="character-card__section">
+				<span class="character-card__title">First seen in:</span><br>
+				<span class="character-card__info">The Wedding Squanchers</span>
 			</div>
 		</div>
-	</article>
+	</div>
 
 </template>
 
 <style scoped lang="sass">
 	@import '@/assets/styles/constants.sass'
 
+	.character-card
+		width: 475rem
+		height: 200rem
+		display: flex
 
+		border-radius: 16rem
+		background-color: $block-background-color
+
+	.character-card__img
+		width: 200rem
+		height: 100%
+
+		&>img
+			object-fit: fill
+			border-radius: 16rem 0 0 16rem
+
+
+	.character-card__description
+		display: grid
+		padding: 12rem
+		align-content: space-between
+
+
+		// border-left-radius: 8rem
+
+	.character-card__status
+		display: flex
+		align-items: top
+		margin-top: 4rem
+
+		font-weight: 500
+		
+
+	.character-card__status-icon
+		width: 9rem
+		height: 9rem
+		display: inline-block
+		margin-right: 7rem
+		
+		border-radius: 50%
+		background-color: red
+
+	.character-card__title
+		display: inline-block
+		margin-bottom: 9rem
+
+		font-size: 15rem
+
+		color: $secondary-font-color
+
+	.character-card__info
+		font-size: 16rem
+		
     
 </style>
 
 
-	// -webkit-text-size-adjust: 100%;
-    // font: 112.5%/1.625 -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial',//sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-    // color: hsla(0,0%,0%,0.8);
-    // font-family: -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-    // font-weight: normal;
-    // word-wrap: break-word;
-    // font-kerning: normal;
-    // font-feature-settings: "kern", "liga", "clig", "calt";
-    // font-variant-ligatures: none;
-    // text-rendering: optimizelegibility;
-    // -webkit-font-smoothing: antialiased;
-    // text-decoration-skip-ink: auto;
-    // box-sizing: inherit;
-    // width: 600px;
-    // height: 220px;
+
 
 

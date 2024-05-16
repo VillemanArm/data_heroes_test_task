@@ -1,6 +1,6 @@
 @import normalize
 @import constants
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap')
 
 *
   margin: 0
@@ -14,9 +14,16 @@ body
     min-height: 100vh
     font-size: 16rem
     background-color: $background-color
-    font-family: 'Ubuntu', sans-serif
+    font-family: 'Roboto', sans-serif
     color: $primary-font-color
     font-weight: 400  
+
+a
+    text-decoration: none
+    color: $primary-font-color
+
+    &:hover
+        color: $link-hover-color
 
 img
     width: 100%
@@ -32,6 +39,11 @@ button
     outline: 0
     border: none
     cursor: pointer
+
+h2
+    font-weight: 900
+    font-size: 27rem
+
 
 @media (max-width: 768px)
     html 
