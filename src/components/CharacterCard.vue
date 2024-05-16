@@ -1,8 +1,20 @@
 <script setup lang="ts">
 import { reactive, ref, computed, onMounted, onUpdated, watch } from 'vue'
 
+interface Character {
+	id: number,
+    image: string,
+    name: string,
+    status: 'Alive' | 'Dead' | 'unknown',
+    species: string,
+    location: {
+      name: string
+    },
+    episode: {name: string}[]  
+}
+
 defineProps<{
-	character: object;
+	character: Character;
 }>();
 
 </script>
@@ -11,24 +23,31 @@ defineProps<{
 
 	<div class="character-card">
 		<div class="character-card__img">
-			<img src="https://rickandmortyapi.com/api/character/avatar/75.jpeg" alt="Courier Flap">
+			<img :src="character.image" :alt="character.name" />
 		</div>
 		<div class="character-card__description">
 			<div class="character-card__section">
-				<h2>Courier Flap</h2>
+				<h2>{{ character.name }}</h2>
 
 				<span class="character-card__status">
-					<span class="character-card__status-icon"></span> 
-					<span>Alive - Alien</span>
+					<span 
+						:class="{
+							'character-card__status-icon': true,
+							'red': character.status === 'Dead',
+							'green': character.status === 'Alive',
+							'grey': character.status === 'unknown',
+						}"
+					></span> 
+					<span>{{ character.status }} - {{ character.species }}</span>
 				</span>
 			</div>
 			<div class="character-card__section">
 				<span class="character-card__title">Last known location:</span><br>
-				<span class="character-card__info">Planet Squanch</span>
+				<span class="character-card__info">{{ character.location.name }}</span>
 			</div>
 			<div class="character-card__section">
 				<span class="character-card__title">First seen in:</span><br>
-				<span class="character-card__info">The Wedding Squanchers</span>
+				<span class="character-card__info">{{ character.episode[0].name }}</span>
 			</div>
 		</div>
 	</div>
@@ -39,20 +58,20 @@ defineProps<{
 	@import '@/assets/styles/constants.sass'
 
 	.character-card
-		width: 475rem
-		height: 200rem
+		width: 100%
+		height: 230rem
 		display: flex
 
-		border-radius: 16rem
+		border-radius: 10rem
 		background-color: $block-background-color
 
 	.character-card__img
-		width: 200rem
+		width: 220rem
 		height: 100%
 
 		&>img
 			object-fit: fill
-			border-radius: 16rem 0 0 16rem
+			border-radius: 10rem 0 0 10rem
 
 
 	.character-card__description
@@ -61,7 +80,6 @@ defineProps<{
 		align-content: space-between
 
 
-		// border-left-radius: 8rem
 
 	.character-card__status
 		display: flex
@@ -80,16 +98,23 @@ defineProps<{
 		border-radius: 50%
 		background-color: red
 
+	.red
+		background-color: $red
+
+	.green
+		background-color: $green
+
+	.grey
+		background-color: $secondary-font-color
+
 	.character-card__title
 		display: inline-block
-		margin-bottom: 9rem
-
-		font-size: 15rem
+		margin-bottom: 10rem
 
 		color: $secondary-font-color
 
 	.character-card__info
-		font-size: 16rem
+		font-size: 18rem
 		
     
 </style>
