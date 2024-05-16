@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import { reactive, ref, computed, onMounted, onUpdated, watch } from 'vue'
 import axios from 'axios'
 
+import Logo from './components/Logo.vue'
 import CharacterCard from './components/CharacterCard.vue'
 
 interface CharactersList {
@@ -70,6 +71,21 @@ onMounted(() => {
 </script>
 
 <template>
+  <header>
+    <div class="container characters-controls">
+      <Logo/>
+      <div class="characters-controls__pagination">
+
+      </div>
+      <div class="characters-controls__filter">
+
+      </div>
+
+    </div>
+
+  </header>
+  
+
   <div class="container characters-wrap">
     <CharacterCard class="" v-if="charactersList" v-for="character in charactersList.results" :key="character.id" :character="character"/>
   </div>
@@ -77,14 +93,20 @@ onMounted(() => {
 
 <style scoped lang="sass">
   @import '@/assets/styles/constants.sass'
-
+  
   .container
     width: 1200rem
     margin: 0 auto
 
+  header
+    padding: 12rem 0
+
+    background-color: $secondary-block-background-color
+
   .characters-wrap
+    margin-top: 24rem
     display: grid
     grid-template-columns: repeat(2, 1fr)
-    gap: 25rem
+    gap: 24rem
 
-</style>./components/CharacterCard.vue
+</style>
