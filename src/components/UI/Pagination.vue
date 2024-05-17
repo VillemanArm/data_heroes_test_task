@@ -3,7 +3,7 @@ import { reactive, ref, computed, onMounted, onUpdated, watch } from 'vue'
 
 defineProps<{
     setPage: Function;
-    maxPage: number;
+    maxPage: number | null;
     currentPage: number;
 }>();
 
@@ -61,8 +61,6 @@ defineProps<{
     @import '@/assets/styles/constants.sass'
 
     .pagination
-        height: 68rem
-        padding-top: 12rem
         display: flex
         align-items: center
 
@@ -81,7 +79,6 @@ defineProps<{
         color: $secondary-font-color
 
         &:hover
-            background-color: $background-color
             color: $primary-font-color
 
     .pagination__button_active
