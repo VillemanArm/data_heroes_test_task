@@ -8,13 +8,8 @@ import Pagination from '@/components/UI/Pagination.vue'
 import Filter from '@/components/Filter.vue'
 import CharacterCard from '@/components/CharacterCard.vue'
 
-
-interface CharactersList {
-  info: {
-    pages: number
-  },
-  results: {
-    id: number,
+interface Character {
+	id: number,
     image: string,
     name: string,
     status: 'Alive' | 'Dead' | 'unknown',
@@ -23,10 +18,16 @@ interface CharactersList {
       name: string
     },
     episode: {name: string}[]  
-  }[]
 }
 
-export type { CharactersList }
+interface CharactersList {
+  info: {
+    pages: number
+  },
+  results: Character[]
+}
+
+export type { Character }
 
 const serverURL: string = 'https://rickandmortyapi.com/graphql'
 

@@ -12,7 +12,7 @@ defineProps<{
 <template>
 
    <div 
-        v-if="maxPage > 1" 
+        v-if="maxPage && maxPage > 1" 
         class="pagination"
     >
         <div 

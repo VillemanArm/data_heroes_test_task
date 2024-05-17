@@ -1,17 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref, computed, onMounted, onUpdated, watch } from 'vue'
-
-interface Character {
-	id: number,
-    image: string,
-    name: string,
-    status: 'Alive' | 'Dead' | 'unknown',
-    species: string,
-    location: {
-      name: string
-    },
-    episode: {name: string}[]  
-}
+import type { Character } from '@/App.vue'
 
 defineProps<{
 	character: Character;
@@ -79,8 +68,6 @@ defineProps<{
 		padding: 12rem
 		align-content: space-between
 
-
-
 	.character-card__status
 		display: flex
 		align-items: top
@@ -88,7 +75,6 @@ defineProps<{
 
 		font-weight: 500
 		
-
 	.character-card__status-icon
 		width: 9rem
 		height: 9rem
@@ -115,8 +101,7 @@ defineProps<{
 
 	.character-card__info
 		font-size: 18rem
-		
-    
+		  
 </style>
 
 

@@ -18,7 +18,7 @@ const setFilterValues = () => {
 
 <template>
 
-    <form class="filter">
+    <form class="filter" @submit.prevent>
         <label for="status">Status:</label>
         <select id="status" v-model="status">
             <option value=""></option>
