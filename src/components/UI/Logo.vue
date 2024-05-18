@@ -38,4 +38,13 @@ import { reactive, ref, computed, onMounted, onUpdated, watch } from 'vue'
         font-size: 28rem
         font-weight: 900
 
+    @media (max-width: 768px)
+        .logo__img
+            width: 50rem
+            height: 50rem
+            margin-right: 10rem
+
+        .logo__title
+            font-size: 24rem
+
 </style>

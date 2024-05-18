@@ -50,6 +50,12 @@ const setName = (newName: string) => {
     name.value = newName
 }
 
+const setFilterValues = (status: string, name: string) => {
+  setStatus(status)
+  setName(name)
+  setPage(1)
+}
+
 const query = computed<string>(() => `
     query {
       characters (
@@ -133,13 +139,9 @@ onMounted(() => {
 
 <style scoped lang="sass">
   @import '@/assets/styles/constants.sass'
-  
-  .container
-    width: 1200rem
-    margin: 0 auto
 
   header
-    padding: 12rem 0
+    padding: 8rem 0
 
     background-color: $secondary-block-background-color
 
@@ -156,7 +158,7 @@ onMounted(() => {
     right: 0
 
   .characters-wrap
-    margin-top: 24rem
+    padding: 24rem 0
     display: grid
     grid-template-columns: repeat(2, 1fr)
     gap: 24rem
@@ -174,6 +176,38 @@ onMounted(() => {
     
     font-size: 28rem
 
+  @media (max-width: 768px)
+    header
+      padding: 12rem 0
+
+    .characters-controls
+      min-height: 60rem
+      padding-top: 16rem
+      justify-content: space-between
+      flex-direction: column-reverse
+      align-items: center
+
+    .filter
+      position: relative
+      right: 0
+
+    .characters-wrap
+      padding: 16rem 0
+      grid-template-columns:  1fr
+      gap: 16rem
+    
+    .characters-notification
+      width: 100%
+      height: 80vh
+      position: relative
+
+    .characters-notification__content  
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, 50%)
+      
+      font-size: 28rem
 
 
 </style>

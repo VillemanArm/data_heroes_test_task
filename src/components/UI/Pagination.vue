@@ -69,7 +69,7 @@ defineProps<{
 
     .pagination__button
         width: 36rem 
-        height: 36rem
+        height: 24rem
         display: flex
         align-items: center
         justify-content: center

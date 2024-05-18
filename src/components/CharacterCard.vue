@@ -101,6 +101,43 @@ defineProps<{
 
 	.character-card__info
 		font-size: 18rem
+		overflow-wrap: break-word
+
+	@media (max-width: 768px)
+		.character-card
+			width: 100%
+			height: 170rem
+
+			border-radius: 8rem
+
+
+		.character-card__img
+			width: 140rem
+			height: 100%
+
+			&>img
+				object-fit: fill
+				border-radius: 8rem 0 0 8rem
+
+		.character-card__description
+			width: 230rem
+			padding: 8rem
+
+		.character-card__status
+			margin-top: 4rem
+			
+		.character-card__status-icon
+			width: 8rem
+			height: 8rem
+			margin-right: 7rem
+
+		.character-card__title
+			display: inline-block
+			margin-bottom: 6rem
+
+
+		.character-card__info
+			font-size: 14rem
 		  
 </style>
 

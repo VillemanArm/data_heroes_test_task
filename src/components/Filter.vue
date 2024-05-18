@@ -26,8 +26,10 @@ const setFilterValues = () => {
             <option value="Dead">Dead</option>
             <option value="unknown">Unknown</option>
         </select>
-        <label for="name">Name:</label>
+        
+        <label for="name">Name: </label>
         <input id="name" type="text" v-model="name">
+        
         <button type="button" @click="setFilterValues()">Search</button>
     </form>
 
@@ -64,6 +66,40 @@ const setFilterValues = () => {
             &:hover
                 background-color: $orange
                 color: $primary-font-color
+
+    @media (max-width: 768px)
+        .filter
+            margin-bottom: 16rem
+            display: grid
+            grid-template-columns: 80rem 1fr
+            gap: 8rem
+
+            align-items: flex-start
+
+            font-size: 16rem
+
+            &>select
+                width: 100%
+
+            &>input
+                padding: 0 4rem
+
+            &>input, select
+                height: 24rem
+
+                font-size: 14rem
+
+                border-radius: 4rem
+
+            &>button
+                padding: 3rem 8rem
+
+                background-color: $secondary-font-color
+                
+                &:hover
+                    background-color: $orange
+                    color: $primary-font-color
+
 
             
 
