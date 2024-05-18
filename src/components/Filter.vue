@@ -1,18 +1,12 @@
 <script setup lang='ts'>
 import { reactive, ref, computed, onMounted, onUpdated, watch } from 'vue'
 
-const {setName, setStatus} = defineProps<{
-    setName: Function;
-    setStatus: Function;
+const {setFilterValues} = defineProps<{
+    setFilterValues: Function;
 }>();
 
 const status = ref<string>()
 const name = ref<string>()
-
-const setFilterValues = () => {
-    setStatus(status.value)
-    setName(name.value)
-}
 
 </script>
 
@@ -30,7 +24,7 @@ const setFilterValues = () => {
         <label for="name">Name: </label>
         <input id="name" type="text" v-model="name">
         
-        <button type="button" @click="setFilterValues()">Search</button>
+        <button type="button" @click="setFilterValues(status, name)">Search</button>
     </form>
 
 </template>

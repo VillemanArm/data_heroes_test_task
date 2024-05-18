@@ -121,8 +121,7 @@ onMounted(() => {
         :currentPage="currentPage" 
       />
       <Filter
-        :setStatus="setStatus"
-        :setName="setName"
+        :setFilterValues="setFilterValues"
       />
     </div>
   
